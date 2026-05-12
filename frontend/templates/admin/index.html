@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Admin Panel — Skill Synth AI{% endblock %}
+
+{% block content %}
+<section class="admin-page">
+    <div class="dash-header">
+        <div>
+            <span class="eyebrow"><span class="dot"></span> Admin Panel</span>
+            <h1 class="dash-title">Platform <span class="grad-text">Management</span></h1>
+        </div>
+    </div>
+
+    <!-- Admin Stats -->
+    <div class="dash-stats" id="adminStats">
+        <div class="dash-stat glass"><span class="dash-stat__icon">👥</span><div><span class="dash-stat__num" id="statUsers">—</span><span class="dash-stat__label">Users</span></div></div>
+        <div class="dash-stat glass"><span class="dash-stat__icon">📊</span><div><span class="dash-stat__num" id="statReports">—</span><span class="dash-stat__label">Reports</span></div></div>
+        <div class="dash-stat glass"><span class="dash-stat__icon">📚</span><div><span class="dash-stat__num" id="statDocs">—</span><span class="dash-stat__label">KB Documents</span></div></div>
+        <div class="dash-stat glass"><span class="dash-stat__icon">🎯</span><div><span class="dash-stat__num" id="statRoles">—</span><span class="dash-stat__label">Roles</span></div></div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="admin-tabs">
+        <button class="admin-tab active" data-tab="roles">Role Datasets</button>
+        <button class="admin-tab" data-tab="users">Users</button>
+        <button class="admin-tab" data-tab="reports">Reports</button>
+        <button class="admin-tab" data-tab="add-role">Add Role</button>
+    </div>
+
+    <!-- Tab Content -->
+    <div class="admin-content">
+        <div class="tab-panel active" id="panel-roles">
+            <div id="rolesGrid" class="admin-grid"></div>
+        </div>
+        <div class="tab-panel" id="panel-users">
+            <div id="usersTable" class="admin-table-wrap"></div>
+        </div>
+        <div class="tab-panel" id="panel-reports">
+            <div id="reportsTable" class="admin-table-wrap"></div>
+        </div>
+        <div class="tab-panel" id="panel-add-role">
+            <form id="addRoleForm" class="admin-form glass">
+                <h3>Add New Role</h3>
+                <div class="form-group"><label>Role Key (e.g. ios_developer)</label><input type="text" id="roleKey" required></div>
+                <div class="form-group"><label>Role Name</label><input type="text" id="roleName" required></div>
+                <div class="form-group"><label>Required Skills (comma-separated)</label><textarea id="roleSkills" rows="3"></textarea></div>
+                <div class="form-group"><label>Interview Topics (comma-separated)</label><textarea id="roleTopics" rows="3"></textarea></div>
+                <div class="form-group"><label>Industry Standards (comma-separated)</label><textarea id="roleStandards" rows="2"></textarea></div>
+                <div id="adminMsg" style="display:none; padding:10px 14px; border-radius:8px; font-size:0.9rem; font-family:var(--font-mono); margin-bottom:12px; background:rgba(255,255,255,0.04); border:1px solid var(--glass-border);"></div>
+                <button type="submit" class="btn btn--primary">Add Role</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+{% endblock %}

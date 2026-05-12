@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block title %}Skill Synth AI — Know exactly where you stand{% endblock %}
+
+{% block content %}
+<!-- ============== HERO ============== -->
+<section class="hero">
+    <div class="hero__inner">
+        <span class="eyebrow">
+            <span class="dot"></span> AI Career Analysis · v0.1 foundation
+        </span>
+
+        <h1 class="hero__title">
+            Stop guessing if you're <em>ready.</em>
+            <br>
+            <span class="grad-text">Synthesize the truth.</span>
+        </h1>
+
+        <p class="hero__lede">
+            Skill Synth AI reads your <strong>resume</strong>, <strong>GitHub</strong>,
+            and <strong>LeetCode</strong> profile, then benchmarks you against the
+            real hiring bar for any role &mdash; and tells you precisely what to fix next.
+        </p>
+
+        <div class="hero__cta">
+            <a href="/auth/register" class="btn btn--primary">
+                Run my analysis
+                <span class="arrow">→</span>
+            </a>
+            <a href="#how" class="btn btn--ghost">See how it works</a>
+        </div>
+
+        <!-- Stat strip -->
+        <div class="stat-strip glass">
+            <div class="stat">
+                <span class="stat__num">3</span>
+                <span class="stat__label">Profiles synthesized<br>per analysis</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+                <span class="stat__num">20<span class="plus">+</span></span>
+                <span class="stat__label">Role benchmarks<br>in the knowledge base</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+                <span class="stat__num">100<span class="plus">%</span></span>
+                <span class="stat__label">Personalized<br>improvement roadmap</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============== HOW IT WORKS ============== -->
+<section class="how" id="how">
+    <div class="section-head">
+        <span class="section-label">How it works</span>
+        <h2>Three inputs. One brutally honest readout.</h2>
+    </div>
+
+    <div class="steps">
+        <article class="step glass">
+            <span class="step__num">01</span>
+            <h3>You share three things</h3>
+            <p>Upload a resume, drop your GitHub URL, paste your LeetCode handle. Pick the role you're targeting.</p>
+            <ul class="step__chips">
+                <li>PDF / DOCX</li>
+                <li>github.com/&hellip;</li>
+                <li>LC handle</li>
+            </ul>
+        </article>
+
+        <article class="step glass">
+            <span class="step__num">02</span>
+            <h3>We synthesize, not summarize</h3>
+            <p>RAG-retrieved role standards meet your real artifacts. Skills extracted, repos profiled, DSA depth measured.</p>
+            <ul class="step__chips">
+                <li>ChromaDB</li>
+                <li>Gemini</li>
+                <li>Real APIs</li>
+            </ul>
+        </article>
+
+        <article class="step glass">
+            <span class="step__num">03</span>
+            <h3>You get a hiring-readiness report</h3>
+            <p>Strong skills, weak skills, missing skills, ATS score, a roadmap, and resources curated to your gaps.</p>
+            <ul class="step__chips">
+                <li>Hiring %</li>
+                <li>Roadmap</li>
+                <li>PDF export</li>
+            </ul>
+        </article>
+    </div>
+</section>
+
+<!-- ============== FEATURES ============== -->
+<section class="features" id="features">
+    <div class="section-head">
+        <span class="section-label">What you get</span>
+        <h2>A career mentor that's read every job posting.</h2>
+    </div>
+
+    <div class="feature-grid">
+        <div class="feature glass feature--lg">
+            <div class="feature__icon">◈</div>
+            <h3>Resume intelligence</h3>
+            <p>Skill extraction, ATS scoring, missing keywords, formatting flags &mdash; the kind of pass a senior recruiter would do, in seconds.</p>
+        </div>
+        <div class="feature glass">
+            <div class="feature__icon">⌬</div>
+            <h3>GitHub deep read</h3>
+            <p>Languages, repo quality, README depth, framework signal, AI/ML usage.</p>
+        </div>
+        <div class="feature glass">
+            <div class="feature__icon">⊹</div>
+            <h3>DSA readiness</h3>
+            <p>LeetCode stats, problem distribution, weak topics, contest signal.</p>
+        </div>
+        <div class="feature glass">
+            <div class="feature__icon">◐</div>
+            <h3>Skill-gap analysis</h3>
+            <p>Your stack vs. the role's real bar. Strong, weak, missing &mdash; mapped.</p>
+        </div>
+        <div class="feature glass">
+            <div class="feature__icon">▣</div>
+            <h3>Curated resources</h3>
+            <p>YouTube, repos, articles, sheets &mdash; matched to your weakest links.</p>
+        </div>
+        <div class="feature glass feature--lg">
+            <div class="feature__icon">⊕</div>
+            <h3>Hiring readiness meter</h3>
+            <p>One percentage. Built from every signal we extracted. Honest, calibrated, and reproducible &mdash; with a roadmap to push it higher.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============== STATUS / ROADMAP ============== -->
+<section class="roadmap">
+    <div class="section-head">
+        <span class="section-label">Build status</span>
+        <h2>Module-by-module construction.</h2>
+        <p class="section-sub">This is an honest build. Each module ships fully working before the next begins.</p>
+    </div>
+
+    <ol class="modules">
+        <li class="module module--done"><span>01</span> Foundation <em>· shipped</em></li>
+        <li class="module module--done"><span>02</span> RAG + ChromaDB knowledge base <em>· shipped</em></li>
+        <li class="module module--done"><span>03</span> Resume analysis <em>· shipped</em></li>
+        <li class="module module--done"><span>04</span> GitHub analysis <em>· shipped</em></li>
+        <li class="module module--done"><span>05</span> LeetCode analysis <em>· shipped</em></li>
+        <li class="module module--done"><span>06</span> Skill-gap engine <em>· shipped</em></li>
+        <li class="module module--done"><span>07</span> Report generation + PDF export <em>· shipped</em></li>
+        <li class="module module--done"><span>08</span> Auth &amp; report history <em>· shipped</em></li>
+        <li class="module module--done"><span>09</span> Admin panel <em>· shipped</em></li>
+        <li class="module module--done"><span>10</span> Frontend polish pass <em>· shipped</em></li>
+    </ol>
+</section>
+{% endblock %}

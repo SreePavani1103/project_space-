@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}Sign In — Skill Synth AI{% endblock %}
+
+{% block content %}
+<section class="auth-page">
+    <div class="auth-card glass">
+        <div class="auth-header">
+            <span class="brand__mark" style="width:40px;height:40px;font-size:1.1rem;">◇</span>
+            <h1>Welcome back</h1>
+            <p class="text-muted">Sign in to access your career dashboard</p>
+        </div>
+
+        <!-- GitHub OAuth -->
+        <a href="{{ url_for('auth.github_login') }}" class="btn btn--github" id="githubLoginBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            Continue with GitHub
+        </a>
+
+        <div class="auth-divider"><span>or continue with email</span></div>
+
+        <form id="loginForm" class="auth-form">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="••••••••" required autocomplete="current-password">
+            </div>
+            <div class="form-check">
+                <input type="checkbox" id="remember" name="remember">
+                <label for="remember">Remember me</label>
+            </div>
+            <div id="loginError" class="form-error" style="display:none;"></div>
+            <button type="submit" class="btn btn--primary btn--full" id="loginBtn">
+                Sign in <span class="arrow">→</span>
+            </button>
+        </form>
+
+        <div class="auth-footer">
+            <p>Don't have an account? <a href="{{ url_for('auth.register_page') }}">Create one →</a></p>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+{% block extra_scripts %}
+<script>
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('loginBtn');
+    const errDiv = document.getElementById('loginError');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Signing in...';
+    errDiv.style.display = 'none';
+    try {
+        const resp = await fetch('/auth/api/login', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value,
+                remember: document.getElementById('remember').checked
+            })
+        });
+        const data = await resp.json();
+        if (data.success) {
+            window.location.href = '/dashboard';
+        } else {
+            errDiv.textContent = data.error || 'Login failed';
+            errDiv.style.display = 'block';
+        }
+    } catch (err) {
+        errDiv.textContent = 'Network error. Please try again.';
+        errDiv.style.display = 'block';
+    }
+    btn.disabled = false;
+    btn.innerHTML = 'Sign in <span class="arrow">→</span>';
+});
+</script>
+{% endblock %}

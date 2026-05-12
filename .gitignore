@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.pytest_cache/
+
+# Virtual environment
+venv/
+env/
+.venv/
+Scripts/
+bin/
+include/
+Lib/
+pyvenv.cfg
+activate
+activate.fish
+Activate.ps1
+deactivate.bat
+*.exe
+
+# Environment
+.env
+.env.local
+!.env.example
+
+# Flask / Databases
+instance/
+*.db
+*.sqlite3
+chroma.sqlite3
+
+# Project data
+uploads/*
+!uploads/.gitkeep
+chromadb/*
+!chromadb/.gitkeep
+
+# Editors
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Logs
+*.log
+logs/
